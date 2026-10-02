@@ -9,6 +9,58 @@ export default function App() {
     setShowName(name);
   };
 
+  let player1Score = 0;
+  let player2Score = 0;
+
+  let [player1Input, setPlayer1Input] = useState("");
+  let [player2Input, setPlayer2Input] = useState("");
+
+  function rockpaperscissors(input: String) {
+    let player1 = input;
+    let player2;
+    if (player2 === "") {
+      player2 = input;
+      return;
+    }
+
+    // if (player1Input === "Rock") {
+    //   if (player2Input === "Rock") {
+    //     return;
+    //   }
+    //   else if (player2Input === "Paper") {
+    //     return player2Score = player2Score + 1;
+    //   }
+    //   else if (player2Input === "Scissors") {
+    //     return player1Score = player1Score + 1;
+    //   }
+    // }
+
+    // else if (player1Input === "Paper") {
+    //   if (player2Input === "Rock") {
+    //     return player1Score = player1Score + 1;
+    //   }
+    //   else if (player2Input === "Paper") {
+    //     return;
+    //   }
+    //   else if (player2Input === "Scissors") {
+    //     return player2Score = player2Score + 1;
+    //   }
+    // }
+
+    // else if (player1Input === "Scissors") {
+    //   if (player2Input === "Rock") {
+    //     return player2Score = player2Score + 1;
+    //   }
+    //   else if (player2Input === "Paper") {
+    //     return player1Score = player1Score + 1
+    //   }
+    //   else if (player2Input === "Scissors") {
+    //     return;
+    //   }
+
+    return;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -27,6 +79,44 @@ export default function App() {
         >
           <Text style={styles.buttonText}>Hello</Text>
         </Pressable>
+      </View>
+
+      <View style={styles.buttonRow}>
+        <Pressable
+          style={styles.button}
+          onPress={() => rockpaperscissors("Rock")}
+        >
+          <Text style={styles.buttonText}>Rock</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() => rockpaperscissors("Paper")}
+        >
+          <Text style={styles.buttonText}>Paper</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() => rockpaperscissors("Scissors")}
+        >
+          <Text style={styles.buttonText}>Scissors</Text>
+        </Pressable>
+
+        <TextInput
+          style={styles.playerInput}
+          placeholder="Player1"
+          placeholderTextColor="888"
+          editable={false}
+        />
+
+        <TextInput
+          style={styles.playerInput}
+          placeholder="Player2"
+          placeholderTextColor="888"
+          value={}
+          editable={false}
+        />
       </View>
 
       <View style={styles.resultContainer}>
@@ -84,5 +174,21 @@ const styles = StyleSheet.create({
 
   result: {
     fontSize: 20,
+  },
+
+  buttonRow: {
+    flexDirection: "row",
+    gap: 10,
+    marginTop: 20,
+  },
+
+  playerInput: {
+    flex: 1,
+    padding: 22,
+    borderWidth: 1,
+    borderColor: "gray",
+    borderRadius: 8,
+    color: "black",
+    fontSize: 18,
   },
 });
