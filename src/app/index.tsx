@@ -9,19 +9,29 @@ export default function App() {
     setShowName(name);
   };
 
-  let player1Score = 0;
-  let player2Score = 0;
-
-  let [player1Input, setPlayer1Input] = useState("");
-  let [player2Input, setPlayer2Input] = useState("");
+  let player1Score: Number = 0;
+  let player2Score: Number = 0; 
 
   function rockpaperscissors(input: String) {
-    let player1 = input;
-    let player2;
-    if (player2 === "") {
-      player2 = input;
-      return;
+    let player1Input: String;
+    let player2Input: String;
+
+    let i = 0;
+
+    while (player1Input = "") {
+      player1Input = input;
+      i++;
+      return
     }
+
+    while
+
+    // let player1 = input;
+    // let player2;
+    // if (player2 === "") {
+    //   player2 = input;
+    //   return;
+    // }
 
     // if (player1Input === "Rock") {
     //   if (player2Input === "Rock") {
@@ -107,6 +117,7 @@ export default function App() {
           style={styles.playerInput}
           placeholder="Player1"
           placeholderTextColor="888"
+          value={String(player1Input)}
           editable={false}
         />
 
@@ -114,7 +125,23 @@ export default function App() {
           style={styles.playerInput}
           placeholder="Player2"
           placeholderTextColor="888"
-          value={}
+          // value={}
+          editable={false}
+        />
+
+        <TextInput
+          style={styles.playerScore}
+          placeholder="Player1 Score"
+          placeholderTextColor="888"
+          // value={player1Score}
+          editable={false}
+        />
+
+        <TextInput
+          style={styles.playerScore}
+          placeholder="Player2 Score"
+          placeholderTextColor="888"
+          // value={player2Score}
           editable={false}
         />
       </View>
@@ -185,6 +212,15 @@ const styles = StyleSheet.create({
   playerInput: {
     flex: 1,
     padding: 22,
+    borderWidth: 1,
+    borderColor: "gray",
+    borderRadius: 8,
+    color: "black",
+    fontSize: 18,
+  },
+
+  playerScore: {
+    padding: 10,
     borderWidth: 1,
     borderColor: "gray",
     borderRadius: 8,
