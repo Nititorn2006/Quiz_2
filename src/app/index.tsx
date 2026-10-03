@@ -9,66 +9,24 @@ export default function App() {
     setShowName(name);
   };
 
-  let player1Score: Number = 0;
-  let player2Score: Number = 0; 
+  const [player1Choice, setPlayer1Choice] = useState("");
+  const [player2Choice, setPlayer2Choice] = useState("");
 
-  function rockpaperscissors(input: String) {
-    let player1Input: String;
-    let player2Input: String;
+  const [player1Score, setPlayer1Score] = useState(0);
+  const [player2Score, setPlayer2Score] = useState(0);
 
-    let i = 0;
-
-    while (player1Input = "") {
-      player1Input = input;
-      i++;
-      return
+  function rockPaperScissors(player1: String, player2: String) {
+    if (player1 === player2) {
+      return;
+    } else if (
+      (player1 === "Rock" && player2 === "Scissors") ||
+      (player1 === "Paper" && player2 === "Rock") ||
+      (player1 === "Scissors" && player2 === "Paper")
+    ) {
+      setPlayer1Score(player1Score + 1);
+    } else {
+      setPlayer2Score(player2Score + 1);
     }
-
-    while
-
-    // let player1 = input;
-    // let player2;
-    // if (player2 === "") {
-    //   player2 = input;
-    //   return;
-    // }
-
-    // if (player1Input === "Rock") {
-    //   if (player2Input === "Rock") {
-    //     return;
-    //   }
-    //   else if (player2Input === "Paper") {
-    //     return player2Score = player2Score + 1;
-    //   }
-    //   else if (player2Input === "Scissors") {
-    //     return player1Score = player1Score + 1;
-    //   }
-    // }
-
-    // else if (player1Input === "Paper") {
-    //   if (player2Input === "Rock") {
-    //     return player1Score = player1Score + 1;
-    //   }
-    //   else if (player2Input === "Paper") {
-    //     return;
-    //   }
-    //   else if (player2Input === "Scissors") {
-    //     return player2Score = player2Score + 1;
-    //   }
-    // }
-
-    // else if (player1Input === "Scissors") {
-    //   if (player2Input === "Rock") {
-    //     return player2Score = player2Score + 1;
-    //   }
-    //   else if (player2Input === "Paper") {
-    //     return player1Score = player1Score + 1
-    //   }
-    //   else if (player2Input === "Scissors") {
-    //     return;
-    //   }
-
-    return;
   }
 
   return (
@@ -94,54 +52,70 @@ export default function App() {
       <View style={styles.buttonRow}>
         <Pressable
           style={styles.button}
-          onPress={() => rockpaperscissors("Rock")}
+          onPress={() => setPlayer1Choice("Rock")}
         >
           <Text style={styles.buttonText}>Rock</Text>
         </Pressable>
 
         <Pressable
           style={styles.button}
-          onPress={() => rockpaperscissors("Paper")}
+          onPress={() => setPlayer1Choice("Paper")}
         >
           <Text style={styles.buttonText}>Paper</Text>
         </Pressable>
 
         <Pressable
           style={styles.button}
-          onPress={() => rockpaperscissors("Scissors")}
+          onPress={() => setPlayer1Choice("Scissors")}
+        >
+          <Text style={styles.buttonText}>Scissors</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            if (player1Choice !== "") {
+              setPlayer2Choice("Rock");
+              rockPaperScissors(player1Choice, "Rock");
+            }
+          }}
+        >
+          <Text style={styles.buttonText}>Rock</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            if (player1Choice !== "") {
+              setPlayer2Choice("Paper");
+              rockPaperScissors(player1Choice, "Paper");
+            }
+          }}
+        >
+          <Text style={styles.buttonText}>Paper</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            if (player1Choice !== "") {
+              setPlayer2Choice("Scissors");
+              rockPaperScissors(player1Choice, "Scissors");
+            }
+          }}
         >
           <Text style={styles.buttonText}>Scissors</Text>
         </Pressable>
 
         <TextInput
-          style={styles.playerInput}
-          placeholder="Player1"
-          placeholderTextColor="888"
-          value={String(player1Input)}
-          editable={false}
-        />
-
-        <TextInput
-          style={styles.playerInput}
-          placeholder="Player2"
-          placeholderTextColor="888"
-          // value={}
+          style={styles.playerScore}
+          value={"Player1 Score: " + player1Score}
           editable={false}
         />
 
         <TextInput
           style={styles.playerScore}
-          placeholder="Player1 Score"
-          placeholderTextColor="888"
-          // value={player1Score}
-          editable={false}
-        />
-
-        <TextInput
-          style={styles.playerScore}
-          placeholder="Player2 Score"
-          placeholderTextColor="888"
-          // value={player2Score}
+          value={"Player2 Score: " + player2Score}
           editable={false}
         />
       </View>
