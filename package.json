@@ -41,6 +41,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "test:maestro:web": "maestro test .maestro",
+    "test:maestro:hello:web": "maestro test .maestro/hello-web.yaml",
+    "test:maestro:rps:web": "maestro test .maestro/rock-paper-scissors-web.yaml",
     "lint": "expo lint"
   },
   "private": true

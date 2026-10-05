@@ -23,6 +23,31 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
+## Run the Maestro web test
+
+Maestro can drive the web version of this Expo app in a desktop Chromium window. Start the app first:
+
+```bash
+npx expo start --web --port 8081
+```
+
+Then, in another terminal, run:
+
+```bash
+npm run test:maestro:web
+```
+
+The command runs both web flows:
+
+- `.maestro/hello-web.yaml` enters `Maestro`, clicks **Hello**, and checks that `Hello Maestro` appears.
+- `.maestro/rock-paper-scissors-web.yaml` checks the initial scores, blocked play before Player 1 chooses, wins for both players, and a draw.
+
+To run only the rock-paper-scissors flow, use:
+
+```bash
+npm run test:maestro:rps:web
+```
+
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
 ## Get a fresh project

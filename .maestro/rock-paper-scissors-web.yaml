@@ -1,0 +1,22 @@
+url: http://localhost:8081
+---
+- launchApp
+
+- tapOn:
+    css: '[data-testid="nameInput"]'
+
+- inputText: "Nititorn"
+
+- tapOn:
+    css: '[data-testid="helloButton"]'
+
+- assertVisible: "Hello Nititorn"
+
+- tapOn:
+    css: '[data-testid="player1Rock"]'
+
+- tapOn:
+    css: '[data-testid="player2Scissors"]'
+
+- assertVisible:
+    css: '[data-testid="player1Score"][value="Player1 Score: 1"]'
